@@ -1,6 +1,6 @@
-package com.example.demo.api;
+package com.example.demo.controller;
 
-import com.example.demo.model.Person;
+import com.example.demo.dto.PersonDTO;
 import com.example.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
@@ -22,17 +22,17 @@ public class PersonController {
     }
 
     @PostMapping
-    public void addPerson(@Valid @NonNull @RequestBody Person person){
-        personService.addPerson(person);
+    public void addPerson(@Valid @NonNull @RequestBody PersonDTO personDTO){
+        personService.addPerson(personDTO);
     }
 
     @GetMapping
-    public List<Person> getAllPeople(){
+    public List<PersonDTO> getAllPeople(){
         return personService.getAllPeople();
     }
 
     @GetMapping(path = "{id}")
-    public Person getPersonById(@PathVariable("id") UUID id){
+    public PersonDTO getPersonById(@PathVariable("id") UUID id){
         return personService.getPersonById(id).orElse(null);
     }
 
@@ -42,7 +42,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Person personToUpdate){
-        personService.updatePerson(id, personToUpdate);
+    public void updatePerson(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody PersonDTO personDTOToUpdate){
+        personService.updatePerson(id, personDTOToUpdate);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.PersonDao;
-import com.example.demo.model.Person;
+import com.example.demo.dto.PersonDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -20,15 +20,15 @@ public class PersonService {
         this.personDao = personDao;
     }
 
-    public  int addPerson(Person person){
-        return personDao.insertPerson(person);
+    public  int addPerson(PersonDTO personDTO){
+        return personDao.insertPerson(personDTO);
     }
 
-    public List<Person> getAllPeople(){
+    public List<PersonDTO> getAllPeople(){
         return personDao.selectAllPeople();
     }
 
-    public Optional<Person> getPersonById(UUID id){
+    public Optional<PersonDTO> getPersonById(UUID id){
         return personDao.selectPersonById(id);
     }
 
@@ -36,7 +36,7 @@ public class PersonService {
         return personDao.deletePersonById(id);
     }
 
-    public int updatePerson(UUID id, Person newPerson){
-        return  personDao.updatePersonById(id, newPerson);
+    public int updatePerson(UUID id, PersonDTO newPersonDTO){
+        return  personDao.updatePersonById(id, newPersonDTO);
     }
 }

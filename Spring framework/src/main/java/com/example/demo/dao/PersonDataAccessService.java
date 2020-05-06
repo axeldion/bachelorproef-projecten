@@ -1,8 +1,7 @@
 package com.example.demo.dao;
 
-import com.example.demo.model.Person;
+import com.example.demo.dto.PersonDTO;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,17 +10,17 @@ import java.util.UUID;
 @Repository("test")
 public class PersonDataAccessService implements PersonDao {
     @Override
-    public int insertPerson(UUID id, Person person) {
+    public int insertPerson(UUID id, PersonDTO personDTO) {
         return 0;
     }
 
     @Override
-    public List<Person> selectAllPeople() {
-        return List.of(new Person(UUID.randomUUID(), "testData"));
+    public List<PersonDTO> selectAllPeople() {
+        return List.of(new PersonDTO(UUID.randomUUID(), "testData"));
     }
 
     @Override
-    public Optional<Person> selectPersonById(UUID id) {
+    public Optional<PersonDTO> selectPersonById(UUID id) {
         return Optional.empty();
     }
 
@@ -31,7 +30,7 @@ public class PersonDataAccessService implements PersonDao {
     }
 
     @Override
-    public int updatePersonById(UUID id, Person person) {
+    public int updatePersonById(UUID id, PersonDTO personDTO) {
         return 0;
     }
 }
